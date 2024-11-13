@@ -5,8 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <h1>Welcome to the Widget Shop</h1>
+    <button id="theme-toggle">Toggle Light/Dark Mode</button>
+    <div>
+      <button class="filter-button" data-category="electronics">Electronics</button>
+      <button class="filter-button" data-category="clothing">Clothing</button>
+      <button class="filter-button" data-category="home">Home</button>
+  </div>
+  
+  <div id="card-container"></div>
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
   </body>
