@@ -16,23 +16,7 @@ themeToggleButton.addEventListener("click", () => {
   localStorage.setItem("theme", newTheme);
 });
 
-const filterButtons = document.querySelectorAll(".filter-button");
 const cardContainer = document.getElementById("card-container");
-
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const category = button.getAttribute("data-category");
-
-    const filteredWidgets = widgets
-      .filter((widget) => widget.category === category)
-      .map((widget) => {
-        return {
-          ...widget,
-        };
-      });
-    renderWidgets(filteredWidgets);
-  });
-});
 
 function renderWidgets(widgetsArray) {
   cardContainer.innerHTML = "";
@@ -48,7 +32,7 @@ function renderWidgets(widgetsArray) {
         <img src="${widget.image}" alt="${widget.name}">
         <h3>${widget.name}</h3>
         <p>${widget.description}</p>
-        <p>Price: $${widget.price}</p>
+        <p>Price: $${widget.price.toFixed(2)}</p>
       </div>
     `;
     cardContainer.insertAdjacentHTML("beforeend", widgetHTML);
@@ -56,3 +40,17 @@ function renderWidgets(widgetsArray) {
 }
 
 renderWidgets(widgets);
+
+const filterButtons = document.querySelectorAll(".filter-button");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const category = button.getAttribute("data-category");
+
+    const filteredWidgets = widgets.filter(
+      (widget) => widget.category === category
+    );
+
+    renderWidgets(filteredWidgets);
+  });
+});

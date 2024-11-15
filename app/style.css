@@ -7,8 +7,12 @@
   --primary-text: #213547;
   --button-background: #f9f9f9;
   --button-hover: #747bff;
+  --button-text: #213547;
   --link-color: #646cff;
   --link-hover: #747bff;
+  --card-text: #213547;
+  --card-width: 400px;
+  --card-height: 400px;
 }
 
 [data-theme="dark"] {
@@ -16,8 +20,10 @@
   --primary-text: #ecf0f1;
   --button-background: #1a1a1a;
   --button-hover: #646cff;
+  --button-text: #ecf0f1;
   --link-color: #646cff;
   --link-hover: #535bf2;
+  --card-text: #ecf0f1;
 }
 
 body {
@@ -51,9 +57,10 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: var(--button-background);
+  color: var(--button-text);
   cursor: pointer;
   border-radius: 8px;
-  transition: background-color 0.25s;
+  transition: background-color 0.25s, color 0.25s;
 }
 
 button:hover {
@@ -70,10 +77,16 @@ button:hover {
 
 .card {
   background-color: var(--primary-background);
+  color: var(--card-text);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 1rem;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: var(--card-width);
+  height: var(--card-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card img {
@@ -81,23 +94,28 @@ button:hover {
   height: auto;
   border-radius: 8px;
   margin-bottom: 1rem;
+  max-height: 150px;
+  object-fit: contain;
 }
 
 .card h3 {
   font-size: 1.2em;
   margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
-.card.effect:hover {
-  transform: scale(1.2) translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
 
 .card p {
   font-size: 0.9em;
   color: #555;
+  flex-grow: 1;
+}
+
+.card.effect:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #filters {
@@ -109,6 +127,7 @@ button:hover {
   padding: 0.6em 1.2em;
   margin: 0.5rem;
   background-color: var(--button-background);
+  color: var(--button-text);
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.25s;
